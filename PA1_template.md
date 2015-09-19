@@ -15,7 +15,7 @@ Here is a histogram on the number of steps taken per pay
 
 ```r
         datasum<-ddply(data,.(date),summarize, steps= sum(steps))
-        hist(datasum$steps, main="Number of Steps per Day",xlab="Numer of Steps",breaks=15,col="red")
+        hist(datasum$steps, main="Number of Steps per Day",xlab="Number of Steps",breaks=15,col="red")
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-2-1.png) 
@@ -133,7 +133,7 @@ Lets check out the Number of steps per day with the imputed data
  #turn date back to normal date
         dataimp$date<-data$date
         datasumi<-ddply(dataimp,.(date),summarize, steps= sum(steps))
-        hist(datasumi$steps, main="Number of Steps per Day",xlab="Numer of                        
+        hist(datasumi$steps, main="Number of Steps per Day",xlab="Number of                        
              Steps",breaks=30,col="red")
 ```
 

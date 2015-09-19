@@ -114,7 +114,7 @@ The two affects mentioned previously explain the shifting of the median (all the
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
-The weekend and weekday groups follow similar patterns when looking at the average steps per interval.  This graph also shows the imputed values are fit in nicely with the patterns seen in the actual data.
+The weekend and weekday groups follow similar patterns when looking at the average steps per interval.  
 ```{r}
    
         ##seperate weekends from weekdays
@@ -125,8 +125,17 @@ The weekend and weekday groups follow similar patterns when looking at the avera
         datawk<-ddply(datawk,.(interval,date,isImputed),summarize,steps=sum(steps),
                         date=if(date==TRUE){date<-"Weekend"}else{date<-"Weekday"})
         plot.final<-qplot(x=interval,y=steps,data=datawk,geom=c("point","line"),
-                        facets = date~.,xlab="Interval",ylab="Ave Steps",type="l", col=isImputed,                           main="Average steps per interval")
+                        facets = date~.,xlab="Interval",ylab="Ave Steps",col="red",type="l",                           main="Average steps per interval")
         print(plot.final)
+             
+```
+The following graph also shows the imputed values are fit in nicely with the patterns seen in the actual data.
+```{r}
+   
+        #add col for Imputed Data
+        plot.finali<-qplot(x=interval,y=steps,data=datawk,geom=c("point","line"),
+                        facets = date~.,xlab="Interval",ylab="Ave Steps",type="l", col=isImputed,                           main="Average steps per interval")
+        print(plot.finali)
              
 ```        
 
